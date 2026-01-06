@@ -3,8 +3,10 @@ import {useState, useRef} from "react";
 import FormErrors from "../components/FormErrors.jsx";
 import axiosClient from "../axiosClient.js";
 import {ClipLoader} from "react-spinners";
+import {useStateContext} from "../contexts/ContextProvider.jsx";
 
 export default function Signup() {
+    const {setUser, setToken} = useStateContext()
     const fnameRef = useRef()
     const lnameRef = useRef()
     const emailRef = useRef()
@@ -23,8 +25,12 @@ export default function Signup() {
         }
         
         setLoading(true)
-        axiosClient.post("/signup", payload).then(({response}) => {
-            
+        axiosClient.post("/signup", payload).then(({data}) => {
+            if(data.user){
+                const user = data.user;
+                setUser(user);
+                setToken(data.token)
+            }
         }).catch(err => {
             const response = err.response;
             if(response && response.status == 422){
