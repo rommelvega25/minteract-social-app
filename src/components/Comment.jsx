@@ -118,12 +118,16 @@ export default function Comment({commentData, onDelete, onDeleteReply}){
                         <button type="button" onClick={()=>{setShowReplyForm(true)}}>
                             Reply
                         </button>
-                        <button type="button" onClick={deleteComment}>
-                            Delete
-                        </button>
+                        {
+                            commenter.id === user.id && (
+                                <button type="button" onClick={deleteComment}>
+                                    Delete
+                                </button>
+                            )
+                        }
                     </div>
                     <div className="comment-replies">
-                        {
+                    {
                             showReplyForm && <CommentForm textplaceHolder="Enter your reply" handleComment={setCommentReplies} parentCommentId={parentCommentId} postId={postId}/>
                         }
 
