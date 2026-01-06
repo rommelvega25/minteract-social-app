@@ -139,11 +139,17 @@ p{
     width: 50%;
 }
 
+.container-white{
+    width: 50%;
+    padding: 15px;
+    background: #ffffff;
+}
+
 .minteract-btn-right{
     text-align: right;
 }
 
-.user-post{
+.user-post, .profile-result{
     margin: 20px auto;
     padding: 20px;
     background: #ffffff;
@@ -160,12 +166,12 @@ p{
     justify-content: center;
 }
 
-.user-post .header .user-profile{
+.header .user-profile{
     display: flex;
     align-items: center;
 }
 
-.user-post .user-profile img{
+.user-profile img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -593,6 +599,17 @@ span.clickable{
 span.clickable-u:hover{
     text-decoration: underline;
 }
+
+.profile-result .footer{
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+.profile-result .footer button, .profile-result .footer a{
+    border-radius: 7px;
+    font-size: 14px;
+}
+
 
 /* Media Queries */
 @media (max-width: 768px) {

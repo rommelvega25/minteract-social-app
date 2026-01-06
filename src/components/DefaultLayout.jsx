@@ -1,6 +1,6 @@
 import {useStateContext} from "../contexts/ContextProvider.jsx";
-import {Link, Navigate, Outlet} from "react-router-dom"
-import {useEffect, useState} from "react"
+import {Link, Navigate, Outlet, useNavigate} from "react-router-dom"
+import {useEffect, useRef, useState} from "react"
 import axiosClient from "../axiosClient.js";
 import defaultAvatar from "../assets/images/default-avatar.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,6 +31,19 @@ export default function DefaultLayout(){
         });
     }
     
+    const searchTextRef = useRef()
+    const navigate = useNavigate();
+
+    const triggerSearch = (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            const q = searchTextRef.current.value.trim();
+            if(!q) return;
+
+            navigate(`/search?q=${encodeURIComponent(q)}`);
+        }
+    };
+    
     return (
         <div id="authenticatedLayout">
             <div className="content">
@@ -44,7 +57,7 @@ export default function DefaultLayout(){
                                     </div>
                                 </Link>
                                 <div className="search-bar-w">
-                                    <input type="text" placeholder="Search people"/>
+                                    <input ref={searchTextRef} onKeyDown={triggerSearch} type="text" placeholder="Search people"/>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +69,7 @@ export default function DefaultLayout(){
                                     </div>
                                 </Link>
                                 <div className="search-bar-w">
-                                    <input type="text" placeholder="Search people"/>
+                                    <input ref={searchTextRef} onKeyDown={triggerSearch} type="text" placeholder="Search people"/>
                                 </div>
                             </div>
                             <div className="actions-w">

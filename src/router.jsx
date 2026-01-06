@@ -6,6 +6,7 @@ import GuestLayout from "./components/GuestLayout.jsx"
 import NotFound from "./views/NotFound.jsx"
 import Home from "./views/Home.jsx"
 import Profile from "./views/Profile.jsx"
+import Search from "./views/Search.jsx";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: "/profile",
                 element: <Profile />
+            },
+            {
+                path: "/search",
+                element: <Search />
             }
         ]
     },
