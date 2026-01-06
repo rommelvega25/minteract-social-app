@@ -16,7 +16,7 @@ button, a{
     cursor: pointer;
     text-decoration: none;
     font-size: 1rem;
-    border-radius: 16px;
+    border-radius: 7px;
 }
 
 input,textarea,button,a{
@@ -27,6 +27,8 @@ input,textarea{
     box-sizing: border-box;
     width: 100%;
     padding: 15px;
+    border-radius: 7px;
+    border: 1px solid #9e9c9c;
 }
 
 img{
@@ -58,7 +60,7 @@ p{
 }
 
 .fcy-form{
-    padding: 15px;
+    padding: 25px;
     background: #ffffff;
     -webkit-box-shadow: #1a202c 0px 0px 5px 0.2px;
     min-height: 120px;
@@ -70,6 +72,9 @@ p{
     padding: 10px;
     width: 100%;
     border: none;
+}
+.fcy-form button:first-child{
+    margin-right: 5px;
 }
 
 .fcy-form textarea{

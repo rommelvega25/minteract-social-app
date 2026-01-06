@@ -11,7 +11,7 @@ export default function Profile(){
     return (
         <div>
             <div className="container timeline">
-                <PostForm classNames="fcy-form p-5"/>
+                <PostForm classNames="fcy-form"/>
                 <PostFeed userId={user.id}/>
             </div>
         </div>

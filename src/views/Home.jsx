@@ -8,7 +8,7 @@ export default function Home(){
     }
     return (
         <div className="container timeline">
-            <PostForm onCreated={handleCreated} classNames="fcy-form p-5"/>
+            <PostForm onCreated={handleCreated} classNames="fcy-form"/>
             <PostsFeed ref={feedRef} classNames="w-90"/>
         </div>
     )
