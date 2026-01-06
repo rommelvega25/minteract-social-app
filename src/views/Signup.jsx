@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import {useState, useRef} from "react";
 import FormErrors from "../components/FormErrors.jsx";
 import axiosClient from "../axiosClient.js";
+import {ClipLoader} from "react-spinners";
 
 export default function Signup() {
     const fnameRef = useRef()
@@ -10,6 +11,7 @@ export default function Signup() {
     const passRef = useRef()
     const confirmPassRef = useRef()
     const [errors, setErrors] = useState(null)
+    const [loading, setLoading] = useState(false)
     const signupSubmit = (e) => {
         e.preventDefault()
         const payload = {
@@ -19,6 +21,8 @@ export default function Signup() {
             password: passRef.current.value,
             password_confirmation: confirmPassRef.current.value
         }
+        
+        setLoading(true)
         axiosClient.post("/signup", payload).then(({response}) => {
             
         }).catch(err => {
@@ -30,26 +34,37 @@ export default function Signup() {
                     setErrors(allErrors)
                 }
             }
+        }).finally(()=>{
+            setLoading(false)
         });
     }
     
     return (
         <div className="full-center">
-            <form className="fcy-form fade-in" onSubmit={signupSubmit}>
-                <h1 className="text-center">Register an account</h1>
+            <div className="wrapper">
                 {
-                    errors && <FormErrors errors={errors} />
+                    loading && (
+                        <div className="minteract-spinner">
+                            <ClipLoader color="gray" loading={loading} size={50} aria-label="Loading Spinner" />
+                        </div>
+                    )
                 }
-                <input ref={fnameRef} type="text" placeholder="First Name"/>
-                <input ref={lnameRef} type="text" placeholder="Last Name"/>
-                <input ref={emailRef} type="email" placeholder="Email Address"/>
-                <input ref={passRef} type="password" placeholder="Password"/>
-                <input ref={confirmPassRef} type="password" placeholder="Confirm Password"/>
-                <button className="btn-purple">Signup</button>
-                <div className="mt-2">
-                    Already have an account? <Link to="/login">Login</Link>
-                </div>
-            </form>
+                <form className="fcy-form fade-in" onSubmit={signupSubmit}>
+                    <h1 className="text-center">Register an account</h1>
+                    {
+                        errors && <FormErrors errors={errors} />
+                    }
+                    <input ref={fnameRef} type="text" placeholder="First Name"/>
+                    <input ref={lnameRef} type="text" placeholder="Last Name"/>
+                    <input ref={emailRef} type="email" placeholder="Email Address"/>
+                    <input ref={passRef} type="password" placeholder="Password"/>
+                    <input ref={confirmPassRef} type="password" placeholder="Confirm Password"/>
+                    <button className="btn-purple">Signup</button>
+                    <div className="mt-2">
+                        Already have an account? <Link to="/login">Login</Link>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
