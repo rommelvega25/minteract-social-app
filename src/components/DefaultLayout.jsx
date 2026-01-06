@@ -35,53 +35,67 @@ export default function DefaultLayout(){
         <div id="authenticatedLayout">
             <div className="content">
                 <header>
-                    <div className="top-navbar">
-                        <div className="left-area">
-                            <Link to="/home">
-                                <div className="minteract-logo">
-                                    <h1>MiA</h1>
+                    <div className="nav-wrapper">
+                        <div className="top-navbar mb-2">
+                            <div className="left-area">
+                                <Link to="/home">
+                                    <div className="minteract-logo">
+                                        <h1>MiA</h1>
+                                    </div>
+                                </Link>
+                                <div className="search-bar-w">
+                                    <input type="text" placeholder="Search people"/>
                                 </div>
-                            </Link>
-                            <div className="search-bar-w">
-                                <input type="text" placeholder="Search people"/>
                             </div>
                         </div>
-                        <div className="actions-w">
-                            <Link to="/home">
-                            <FontAwesomeIcon icon={faHouse} size="lg" className="text-purple"/>
-                            </Link>
-                        </div>
-                        <div className="right-actions-w">
+                        <div className="top-navbar">
+                            <div className="left-area">
+                                <Link to="/home">
+                                    <div className="minteract-logo">
+                                        <h1>MiA</h1>
+                                    </div>
+                                </Link>
+                                <div className="search-bar-w">
+                                    <input type="text" placeholder="Search people"/>
+                                </div>
+                            </div>
+                            <div className="actions-w">
+                                <Link id="homeBtn" to="/home">
+                                    <FontAwesomeIcon icon={faHouse} size="lg" className="text-purple"/>
+                                </Link>
+                            </div>
+                            <div className="right-actions-w">
                             <span className="action clickable">
                                 <FontAwesomeIcon icon={faMessage} size="lg" className="text-purple"/>
                             </span>
-                            <span className="action clickable">
+                                <span className="action clickable">
                                 <FontAwesomeIcon icon={faBell} size="lg" className="text-purple"/>
                             </span>
-                            <div className="profile-right-actions">
-                                <button type="button" onClick={toggleDropdown}>
-                                    <img className="avatar" src={user.avatar_url ?? defaultAvatar}/>
-                                </button>
-                                {
-                                    showDropdown && (
-                                        <div className="dropdown-menu">
-                                            <ul>
-                                                <li>
-                                                    <Link to="/profile">
-                                                        Profile
-                                                    </Link>
-                                                </li>
-                                                <li>
-                                                    <button onClick={onLogout}>
-                                                        Logout
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    )
-                                }
-                            </div>
+                                <div className="profile-right-actions">
+                                    <button type="button" onClick={toggleDropdown}>
+                                        <img className="avatar" src={user.avatar_url ?? defaultAvatar}/>
+                                    </button>
+                                    {
+                                        showDropdown && (
+                                            <div className="dropdown-menu">
+                                                <ul>
+                                                    <li>
+                                                        <Link to="/profile">
+                                                            Profile
+                                                        </Link>
+                                                    </li>
+                                                    <li>
+                                                        <button onClick={onLogout}>
+                                                            Logout
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        )
+                                    }
+                                </div>
 
+                            </div>
                         </div>
                     </div>
                 </header>
