@@ -90,7 +90,7 @@ export default function UserPost({postData, onDelete, onUpdate}){
                             <img src={poster.avatar_url ?? defaultAvatar}/>
                         </div>
                         <div className="user-name">
-                            <Link>{poster.first_name} {poster.last_name}</Link>
+                            <Link to={poster.id === user.id ? "/profile": `/profile/${poster.id}`}>{poster.first_name} {poster.last_name}</Link>
                         </div>
                     </div>
                     <div className="actions">

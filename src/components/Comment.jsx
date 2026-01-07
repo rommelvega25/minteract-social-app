@@ -100,7 +100,7 @@ export default function Comment({commentData, onDelete, onDeleteReply}){
                 <div className="comment-header">
                     <div className="user-profile">
                     <img src={user.avatar ?? defaultAvatar}/>
-                        <Link to="/profile">{commenter.first_name} {commenter.last_name}</Link>
+                        <Link to={commenter.id === user.id ? "/profile": `/profile/${commenter.id}`}>{commenter.first_name} {commenter.last_name}</Link>
                     </div>
                     <div className="comment-date">
                         {moment.unix(commentData.create_time).format("MMMM DD YYYY HH:mm:ss")}

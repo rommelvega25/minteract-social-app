@@ -6,6 +6,7 @@ use \App\Http\Controllers\Api\AuthController;
 use \App\Http\Controllers\Api\PostController;
 use \App\Http\Controllers\Api\CommentController;
 use \App\Http\Controllers\Api\SearchController;
+use \App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+    Route::get("/user/{id}", [UserController::class, 'index']);
 
     Route::post("/post/create", [PostController::class, 'store']);
     Route::put("/post/{id}", [PostController::class, 'update']);
