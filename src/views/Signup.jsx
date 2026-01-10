@@ -55,7 +55,7 @@ export default function Signup() {
                         </div>
                     )
                 }
-                <form className="fcy-form fade-in" onSubmit={signupSubmit}>
+                <form className="fcy-form translucent fade-in" onSubmit={signupSubmit}>
                     <h1 className="text-center">Register an account</h1>
                     {
                         errors && <FormErrors errors={errors} />

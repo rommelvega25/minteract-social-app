@@ -47,8 +47,11 @@ export default function Login(){
                         </div>
                     )
                 }
-                <form className="fcy-form fade-in" onSubmit={loginSubmit}>
-                    <h1 className="text-center">Login</h1>
+                <form className="fcy-form translucent fade-in" onSubmit={loginSubmit}>
+                    <div className="form-header">
+                        <h1 className="text-center">Minteract</h1>
+                        <p>Start mingling and interacting with other people!</p>
+                    </div>
                     {
                         errors && <FormErrors errors={errors}/>
                     }
@@ -56,7 +59,7 @@ export default function Login(){
                     <input ref={passwordRef} className="fcy-input" type="password" placeholder="Password"/>
                     <button className="btn-purple">Login</button>
                     <div className="mt-2">
-                        Don't have an account? <Link to="/signup">Regsiter now</Link>
+                        Don't have an account? <Link to="/signup">Register now</Link>
                     </div>
                 </form>
             </div>
