@@ -7,7 +7,7 @@ export default function GuestLayout(){
         return <Navigate to="/" />
     }
     return (
-        <div>
+        <div className="fcy-bg">
             <Outlet/>
         </div>
     )
